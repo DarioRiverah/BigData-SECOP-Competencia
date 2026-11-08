@@ -1,0 +1,139 @@
+table Procesos
+	lineageTag: 11f27330-4635-4901-bd92-329d8b989161
+
+	measure 'Procesos competitivos' = SUM(Procesos[procesos])
+		formatString: #,0
+		lineageTag: a0d86ac8-1dd4-4424-9a5a-afb126d0d210
+
+	measure 'Total adjudicados' = SUM(Procesos[adjudicados])
+		formatString: #,0
+		lineageTag: 70a64c24-1a7a-42de-bb42-46d36b0d6127
+
+	measure 'Procesos con oferente único' = SUM(Procesos[oferente_unico])
+		formatString: #,0
+		lineageTag: e5a8fed2-a05a-4c4f-8cb7-663467854a04
+
+	measure '% Oferente único' = DIVIDE([Procesos con oferente único], [Total adjudicados])
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: 0c38c7a7-7a30-45b3-a8d9-85b3d0b6e535
+
+	measure 'Oferentes promedio' = DIVIDE(SUM(Procesos[oferentes]), [Total adjudicados])
+		formatString: 0.0
+		lineageTag: 756178a1-cd00-4ed2-a1cb-4ae360065526
+
+	measure '% Cancelados' = DIVIDE(SUM(Procesos[cancelados]), [Procesos competitivos])
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: a12ae6ae-0887-46d2-bc5f-ec9536128682
+
+	measure '% Proveedor local' = DIVIDE(SUM(Procesos[proveedor_local]), SUM(Procesos[proveedor_conocido]))
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: c5c8b179-45b6-4d3b-9988-110bd314482f
+
+	measure 'Valor adjudicado (billones)' = SUM(Procesos[valor_adjudicado]) / 1e12
+		formatString: #,0.0
+		lineageTag: fd371883-5902-4788-9ea6-50148d9640ea
+
+	measure '% Procesos del perfil' = IF(SELECTEDVALUE(Perfiles[cluster_id]) = -1, BLANK(), DIVIDE([Total adjudicados], CALCULATE([Total adjudicados], ALL(Perfiles), Perfiles[cluster_id] <> -1)))
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: f910ea39-ad33-44de-985e-14bdac254ee7
+
+	measure '% Valor del perfil' = IF(SELECTEDVALUE(Perfiles[cluster_id]) = -1, BLANK(), DIVIDE(SUM(Procesos[valor_adjudicado]), CALCULATE(SUM(Procesos[valor_adjudicado]), ALL(Perfiles), Perfiles[cluster_id] <> -1)))
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: 4543930a-82e0-4352-a0b3-bd95d50579fe
+
+	measure 'Promedio % oferente único' = CALCULATE([% Oferente único], ALL(Departamentos))
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: 61b5eb48-1e20-40df-94bd-662d54b8939f
+
+	measure Narrativa = "En la selección, el " & FORMAT([% Oferente único], "0.0 %") & " de los procesos competitivos adjudicados tuvo un solo oferente, con " & FORMAT([Oferentes promedio], "0.0") & " oferentes en promedio y un " & FORMAT([% Cancelados], "0.0 %") & " de procesos cancelados."
+		lineageTag: d8f993fa-f68f-4055-9ade-8fc465161d16
+
+	measure '% Oferente único (depto)' = IF(SELECTEDVALUE(Departamentos[departamento]) = "No definido" || [Total adjudicados] < 100, BLANK(), [% Oferente único])
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: 42c9b4be-4790-4407-99ac-d2c2caa93975
+
+	column anio
+		dataType: int64
+		lineageTag: cbc4020a-540b-4eab-b458-4d453823db9a
+		summarizeBy: none
+		sourceColumn: anio
+
+	column departamento
+		dataType: string
+		lineageTag: cf1d0b76-7834-4a83-a98b-c9ef38754d89
+		summarizeBy: none
+		sourceColumn: departamento
+
+	column orden
+		dataType: string
+		lineageTag: 5ddf0a76-f4cf-4589-80d3-1be36138da9d
+		summarizeBy: none
+		sourceColumn: orden
+
+	column modalidad
+		dataType: string
+		lineageTag: 399c14dd-64b2-4724-b41d-837815de6ee3
+		summarizeBy: none
+		sourceColumn: modalidad
+
+	column cluster_id
+		dataType: int64
+		lineageTag: c3802a3a-06b7-4d94-a203-66bcc15c0afc
+		summarizeBy: none
+		sourceColumn: cluster_id
+
+	column procesos
+		dataType: int64
+		lineageTag: ee0b6712-aace-4869-98e1-7fc75c0a718e
+		sourceColumn: procesos
+
+	column adjudicados
+		dataType: int64
+		lineageTag: 46fae7ab-b40d-403a-8894-52126d042af0
+		sourceColumn: adjudicados
+
+	column cancelados
+		dataType: int64
+		lineageTag: 18bdb561-afc4-4599-aca1-b98b195a5dbd
+		sourceColumn: cancelados
+
+	column oferente_unico
+		dataType: double
+		lineageTag: cb5d432d-2d36-44d8-bea1-6345bd3fc153
+		sourceColumn: oferente_unico
+
+	column oferentes
+		dataType: double
+		lineageTag: e2d4e6a5-6b6e-4e90-ad28-8314c43dca0e
+		sourceColumn: oferentes
+
+	column valor_adjudicado
+		dataType: double
+		lineageTag: d80ba225-6dd0-4715-9d8c-cc6f80ca9716
+		sourceColumn: valor_adjudicado
+
+	column visualizaciones
+		dataType: int64
+		lineageTag: 328fa890-7103-40fb-8185-1c75f6750d85
+		sourceColumn: visualizaciones
+
+	column proveedor_local
+		dataType: double
+		lineageTag: 7c7f7c7d-55f2-46df-b7c0-14ddf708d1e8
+		sourceColumn: proveedor_local
+
+	column proveedor_conocido
+		dataType: int64
+		lineageTag: dcf944cf-7791-4f9d-8007-d4a469d8c1f5
+		sourceColumn: proveedor_conocido
+
+	partition Procesos = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\hechos_procesos.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"anio", Int64.Type}, {"departamento", type text}, {"orden", type text}, {"modalidad", type text}, {"cluster_id", Int64.Type}, {"procesos", Int64.Type}, {"adjudicados", Int64.Type}, {"cancelados", Int64.Type}, {"oferente_unico", type number}, {"oferentes", type number}, {"valor_adjudicado", type number}, {"visualizaciones", Int64.Type}, {"proveedor_local", type number}, {"proveedor_conocido", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

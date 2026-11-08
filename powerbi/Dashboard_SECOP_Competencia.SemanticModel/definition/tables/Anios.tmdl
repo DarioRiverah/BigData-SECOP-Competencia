@@ -1,0 +1,19 @@
+table Anios
+	lineageTag: b22a4803-2b9b-447f-9287-235e291ba14d
+
+	column anio
+		dataType: int64
+		lineageTag: 88ff29e1-86a8-4827-ac59-7c3127f61c31
+		summarizeBy: none
+		sourceColumn: anio
+
+	partition Anios = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\dim_anio.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"anio", Int64.Type}}, "en-US")
+				in
+				    Tipos
+

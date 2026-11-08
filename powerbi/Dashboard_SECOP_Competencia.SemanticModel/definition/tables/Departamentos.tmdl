@@ -1,0 +1,19 @@
+table Departamentos
+	lineageTag: 259750cf-4c4e-4069-badc-18b36baf594c
+
+	column departamento
+		dataType: string
+		lineageTag: e5fbf03d-c4ef-4090-a129-bda75c7104c3
+		summarizeBy: none
+		sourceColumn: departamento
+
+	partition Departamentos = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\dim_departamento.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"departamento", type text}}, "en-US")
+				in
+				    Tipos
+

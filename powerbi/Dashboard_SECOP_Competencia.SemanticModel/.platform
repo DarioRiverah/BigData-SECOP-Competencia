@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Dashboard_SECOP_Competencia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "94449028-e6ba-4cac-98b1-02f6b8cf7810"
+  }
+}

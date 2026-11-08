@@ -1,0 +1,388 @@
+cultureInfo es-CO
+
+	linguisticMetadata =
+			{
+			  "Version": "2.0.0",
+			  "Language": "en-US",
+			  "Entities": {
+			    "procesos.total_adjudicados": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "Total adjudicados"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Procesos adjudicados": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.procesos_del_perfil": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "% Procesos del perfil"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% de procesos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.valor_del_perfil": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "% Valor del perfil"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% del valor adjudicado": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.oferente_único": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "% Oferente único"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Oferente único": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Adjudicados con un solo oferente": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.cancelados": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "% Cancelados"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Cancelados": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Procesos cancelados": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.procesos_competitivos": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "Procesos competitivos"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Procesos competitivos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.oferente_único_depto": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "% Oferente único (depto)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Oferente único": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.proveedor_local": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "% Proveedor local"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Proveedor del mismo departamento": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "procesos.oferentes_promedio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Procesos",
+			          "ConceptualProperty": "Oferentes promedio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Oferentes por proceso": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "histograma.procesos_histograma": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Histograma",
+			          "ConceptualProperty": "Procesos (histograma)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Procesos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "seleccionk.silueta": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "SeleccionK",
+			          "ConceptualProperty": "Silueta"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Silueta": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entidades.entidad": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Entidades",
+			          "ConceptualProperty": "entidad"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Entidad": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entidades.departamento": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Entidades",
+			          "ConceptualProperty": "departamento"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Departamento": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entidades.procesos_adjudicados": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Entidades",
+			          "ConceptualProperty": "procesos_adjudicados"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Procesos": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entidades.pct_oferente_unico": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Entidades",
+			          "ConceptualProperty": "pct_oferente_unico"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "% oferente único": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "entidades.oferentes_promedio": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Entidades",
+			          "ConceptualProperty": "oferentes_promedio"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Oferentes prom.": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "segmentos.oferente_único_segmento": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Segmentos",
+			          "ConceptualProperty": "% Oferente único (segmento)"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "Oferente único": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  }
+			}
+		contentType: json
+

@@ -1,0 +1,40 @@
+relationship rel_Procesos_anio_Anios
+	fromColumn: Procesos.anio
+	toColumn: Anios.anio
+
+relationship rel_Segmentos_anio_Anios
+	fromColumn: Segmentos.anio
+	toColumn: Anios.anio
+
+relationship rel_Procesos_orden_Ordenes
+	fromColumn: Procesos.orden
+	toColumn: Ordenes.orden
+
+relationship rel_Segmentos_orden_Ordenes
+	fromColumn: Segmentos.orden
+	toColumn: Ordenes.orden
+
+relationship rel_Entidades_orden_Ordenes
+	fromColumn: Entidades.orden
+	toColumn: Ordenes.orden
+
+relationship rel_Procesos_departamento_Departamentos
+	fromColumn: Procesos.departamento
+	toColumn: Departamentos.departamento
+
+relationship rel_Entidades_departamento_Departamentos
+	fromColumn: Entidades.departamento
+	toColumn: Departamentos.departamento
+
+relationship rel_Procesos_cluster_id_Perfiles
+	fromColumn: Procesos.cluster_id
+	toColumn: Perfiles.cluster_id
+
+relationship rel_Segmentos_cluster_id_Perfiles
+	fromColumn: Segmentos.cluster_id
+	toColumn: Perfiles.cluster_id
+
+relationship rel_Histograma_cluster_id_Perfiles
+	fromColumn: Histograma.cluster_id
+	toColumn: Perfiles.cluster_id
+

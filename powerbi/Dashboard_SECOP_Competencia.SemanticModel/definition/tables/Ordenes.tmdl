@@ -1,0 +1,19 @@
+table Ordenes
+	lineageTag: 0f31de0d-116b-48c5-bb78-4264ad84f159
+
+	column orden
+		dataType: string
+		lineageTag: 5d22e308-ed27-470c-a764-90aff9e91587
+		summarizeBy: none
+		sourceColumn: orden
+
+	partition Ordenes = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\dim_orden.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"orden", type text}}, "en-US")
+				in
+				    Tipos
+

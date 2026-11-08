@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Dashboard_SECOP_Competencia"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "d37170d6-2310-41e1-a1e7-1342fe1e1dae"
+  }
+}

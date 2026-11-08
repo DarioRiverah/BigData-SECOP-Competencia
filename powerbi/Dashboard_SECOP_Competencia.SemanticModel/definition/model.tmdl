@@ -1,0 +1,27 @@
+model Model
+	culture: es-CO
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: es-CO
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["TMDLView_Desktop","DevMode"]
+
+annotation PBI_QueryOrder = ["Procesos","Segmentos","Entidades","Histograma","Perfiles","SeleccionK","Anios","Ordenes","Departamentos"]
+
+ref table Procesos
+ref table Segmentos
+ref table Entidades
+ref table Histograma
+ref table Perfiles
+ref table SeleccionK
+ref table Anios
+ref table Ordenes
+ref table Departamentos
+
+ref cultureInfo es-CO
+

@@ -1,0 +1,40 @@
+table Histograma
+	lineageTag: b3f8468f-0a18-4050-890e-5af23af834b7
+
+	measure 'Procesos (histograma)' = SUM(Histograma[procesos])
+		formatString: #,0
+		lineageTag: 72675827-940c-4dbf-a90c-95423eaa6d5f
+
+	column cluster_id
+		dataType: int64
+		lineageTag: 64729d75-d471-48d7-906d-5586d9c2dac6
+		summarizeBy: none
+		sourceColumn: cluster_id
+
+	column oferentes
+		dataType: int64
+		lineageTag: 5eb66b7e-2a86-4a90-930b-6c28f7382163
+		sourceColumn: oferentes
+
+	column procesos
+		dataType: int64
+		lineageTag: d82f48e2-facf-488d-9403-196dc5ce4e24
+		sourceColumn: procesos
+
+	column oferentes_txt
+		dataType: string
+		lineageTag: bada22a8-27ef-465b-94e9-d326b44713b0
+		summarizeBy: none
+		sourceColumn: oferentes_txt
+		sortByColumn: oferentes
+
+	partition Histograma = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\histograma_oferentes.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"cluster_id", Int64.Type}, {"oferentes", Int64.Type}, {"procesos", Int64.Type}, {"oferentes_txt", type text}}, "en-US")
+				in
+				    Tipos
+

@@ -1,0 +1,22 @@
+# Datos pesados (se generan con los scripts)
+*.csv.gz
+SecopII_ProcesosDeContratacion.csv
+datos/
+# Entornos y temporales
+.venv/
+venv/
+__pycache__/
+*.pyc
+spark-warehouse/
+metastore_db/
+derby.log
+.DS_Store
+
+# Resultados, documentos e imágenes
+resultados/
+*.pdf
+*.png
+*.jpg
+*.docx
+powerbi/*.csv
+*.pbix

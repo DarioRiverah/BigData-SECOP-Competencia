@@ -1,0 +1,56 @@
+table Perfiles
+	lineageTag: 0d3d0ad2-0255-4437-96fc-016c50ff29ff
+
+	column cluster_id
+		dataType: int64
+		lineageTag: 481fa7f6-5382-4b56-ba4a-767653eaddf1
+		summarizeBy: none
+		sourceColumn: cluster_id
+
+	column perfil
+		dataType: string
+		lineageTag: 951ecfe0-3275-460a-b24b-bfa991ae41d0
+		summarizeBy: none
+		sourceColumn: perfil
+
+	column orden_perfil
+		dataType: int64
+		lineageTag: 8bedec3a-e88d-4418-b941-8308e1e714a6
+		sourceColumn: orden_perfil
+
+	column descripcion
+		dataType: string
+		lineageTag: dbc38575-2bb2-442b-8152-76a342b1206d
+		summarizeBy: none
+		sourceColumn: descripcion
+
+	column mediana_oferentes
+		dataType: double
+		lineageTag: 57bd8df0-7d70-4bd3-bf57-ae2ad080be5b
+		sourceColumn: mediana_oferentes
+
+	column mediana_visualizaciones
+		dataType: double
+		lineageTag: a56f337f-d09e-4196-b1ba-9c8e253e5a23
+		sourceColumn: mediana_visualizaciones
+
+	column mediana_duracion_dias
+		dataType: double
+		lineageTag: 29557dca-0cd3-43e6-9db2-f23a53bb92d9
+		sourceColumn: mediana_duracion_dias
+
+	column mediana_valor
+		dataType: double
+		lineageTag: f4907a1a-89c0-4c81-8aad-c4c2f1fe5c09
+		sourceColumn: mediana_valor
+
+	partition Perfiles = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\perfiles.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"cluster_id", Int64.Type}, {"perfil", type text}, {"orden_perfil", Int64.Type}, {"descripcion", type text}, {"mediana_oferentes", type number}, {"mediana_visualizaciones", type number}, {"mediana_duracion_dias", type number}, {"mediana_valor", type number}}, "en-US")
+				in
+				    Tipos
+

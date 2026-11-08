@@ -1,0 +1,32 @@
+table SeleccionK
+	lineageTag: 03d520ef-423f-4a02-ad9d-fa2df1fe3137
+
+	measure Silueta = MAX(SeleccionK[silhouette])
+		formatString: 0.000
+		lineageTag: 03d2b451-ab06-45f8-9902-f2a6fc3aef2c
+
+	column k
+		dataType: int64
+		lineageTag: 38d795eb-3f62-4963-9e86-6659477040a2
+		sourceColumn: k
+
+	column silhouette
+		dataType: double
+		lineageTag: 3b1c6a25-aafd-4895-9ca2-cf53c452a36c
+		sourceColumn: silhouette
+
+	column wssse
+		dataType: double
+		lineageTag: b91b167a-4569-4ce6-b357-c21583f0e0b2
+		sourceColumn: wssse
+
+	partition SeleccionK = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\seleccion_k.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"k", Int64.Type}, {"silhouette", type number}, {"wssse", type number}}, "en-US")
+				in
+				    Tipos
+

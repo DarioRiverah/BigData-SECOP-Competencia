@@ -1,0 +1,96 @@
+table Segmentos
+	lineageTag: 1f766278-d48c-4999-bc5a-bdb25a15fb3e
+
+	measure 'Adjudicados (segmento)' = SUM(Segmentos[adjudicados])
+		formatString: #,0
+		lineageTag: a0eac510-561a-4f40-a6ec-1dce403a8340
+
+	measure '% Oferente único (segmento)' = IF([Adjudicados (segmento)] >= 300, DIVIDE(SUM(Segmentos[oferente_unico]), [Adjudicados (segmento)]))
+		formatString: 0.0 %;-0.0 %;0.0 %
+		lineageTag: e66cb357-95e8-4082-b2d1-054b653153b8
+
+	column segmento
+		dataType: int64
+		lineageTag: 6a84f15d-c27e-42a2-bff9-c73847c526c4
+		summarizeBy: none
+		sourceColumn: segmento
+
+	column anio
+		dataType: int64
+		lineageTag: eb4cea70-07af-428e-949e-29c998d67f36
+		summarizeBy: none
+		sourceColumn: anio
+
+	column orden
+		dataType: string
+		lineageTag: 6adb0b42-38af-4953-99ca-4128ddb68034
+		summarizeBy: none
+		sourceColumn: orden
+
+	column cluster_id
+		dataType: int64
+		lineageTag: 6214b651-adc7-4e8d-aa0b-53b0700efa6a
+		summarizeBy: none
+		sourceColumn: cluster_id
+
+	column procesos
+		dataType: int64
+		lineageTag: d081fa53-71c9-44e7-ac7e-281f66a94cc9
+		sourceColumn: procesos
+
+	column adjudicados
+		dataType: int64
+		lineageTag: dd7b9b58-f508-4203-9d06-22375ecc6a9a
+		sourceColumn: adjudicados
+
+	column cancelados
+		dataType: int64
+		lineageTag: 7c2f3b2d-db38-420c-9786-f2f40a388246
+		sourceColumn: cancelados
+
+	column oferente_unico
+		dataType: double
+		lineageTag: de6ccb24-3d13-4fd7-b23c-71d3c8cb6f30
+		sourceColumn: oferente_unico
+
+	column oferentes
+		dataType: double
+		lineageTag: 2c938ef2-9600-4819-9cb9-2ece16221cbc
+		sourceColumn: oferentes
+
+	column valor_adjudicado
+		dataType: double
+		lineageTag: c8a5a8fd-553f-48ea-b505-60d5739b88ef
+		sourceColumn: valor_adjudicado
+
+	column visualizaciones
+		dataType: int64
+		lineageTag: 745b0e7b-46d3-4cdc-9787-e50b0b0862e9
+		sourceColumn: visualizaciones
+
+	column proveedor_local
+		dataType: double
+		lineageTag: 7513cccc-5dcc-4fe6-82be-a68168541cc6
+		sourceColumn: proveedor_local
+
+	column proveedor_conocido
+		dataType: int64
+		lineageTag: 41b31e83-bd2e-4468-9f10-7f56d17fb8bd
+		sourceColumn: proveedor_conocido
+
+	column segmento_nombre
+		dataType: string
+		lineageTag: c152bafc-1473-4b85-ae7a-37b58ee9fd35
+		summarizeBy: none
+		sourceColumn: segmento_nombre
+
+	partition Segmentos = m
+		mode: import
+		source =
+				let
+				    Origen = Csv.Document(File.Contents("C:\Users\Dario Rivera\Downloads\BigData_SECOP_Competencia\powerbi\hechos_segmentos.csv"),[Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+				    Encabezados = Table.PromoteHeaders(Origen, [PromoteAllScalars=true]),
+				    Tipos = Table.TransformColumnTypes(Encabezados, {{"segmento", Int64.Type}, {"anio", Int64.Type}, {"orden", type text}, {"cluster_id", Int64.Type}, {"procesos", Int64.Type}, {"adjudicados", Int64.Type}, {"cancelados", Int64.Type}, {"oferente_unico", type number}, {"oferentes", type number}, {"valor_adjudicado", type number}, {"visualizaciones", Int64.Type}, {"proveedor_local", type number}, {"proveedor_conocido", Int64.Type}, {"segmento_nombre", type text}}, "en-US")
+				in
+				    Tipos
+
